@@ -9,7 +9,7 @@ def open_and_close_file(file_path):
     Args:
         file_path: путь до файла
     """
-    open = bad_open
+    #open = bad_open
     ###
     # Добавьте свой код сюда
     ###
