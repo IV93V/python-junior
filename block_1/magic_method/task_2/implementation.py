@@ -24,8 +24,3 @@ class MathClock:
         self.h = (self.h-value)%24
     def get_time(self):
         return "{:02d}:{:02d}".format(self.h, self.m)
-
-
-time_obj = MathClock()
-time_obj * 9
-print(time_obj.get_time())         
