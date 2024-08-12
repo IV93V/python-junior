@@ -28,4 +28,5 @@ def get_average_cost_without_product(product, begin, end):
         res_list.append(SelectedProductCost.value * elem.get('count'))
 
     return mean(res_list)
-    raise NotImplementedError
+
+    #raise NotImplementedError
