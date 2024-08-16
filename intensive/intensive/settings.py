@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'db_test',
     'django_extensions',
-    'modelfields',
     'queryset_methods',
+    'meta_and_inheritance',
 ]
 
 MIDDLEWARE = [

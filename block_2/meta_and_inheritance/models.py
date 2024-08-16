@@ -9,28 +9,31 @@ class WorkerManager(models.Manager):
         """
         Переопределенный кверисет возвращающий всех сотрудников без директоров
         """
-
+        return super().get_queryset().exclude(director__worker_ptr_id__isnull=False)
         raise NotImplementedError
 
 
-class EducationOffice(models.Model):
+class Office(models.Model):
+    address = models.TextField('Адрес')
+    mail = models.CharField('Адрес почты', max_length=30)
+
+    class Meta:
+        abstract = True
+
+class EducationOffice(Office):
     """
     Учебный офис
     """
-    address = models.TextField('Адрес')
-    mail = models.CharField('Адрес почты', max_length=30,)
     is_active = models.BooleanField(default=True)
 
     class Meta:
         db_table = 'education_office'
 
 
-class GeneralOffice(models.Model):
+class GeneralOffice(Office):
     """
     Головной офис
     """
-    address = models.TextField('Адрес')
-    mail = models.CharField('Адрес почты', max_length=30)
     name = models.TextField('Название головного офиса ')
 
     class Meta:
@@ -88,7 +91,12 @@ class OrderedWorker(Worker):
         """
         Получить значение года приема на работу
         """
+        return self.startwork_date.yearb
         raise NotImplementedError
+
+    class Meta:
+        proxy=True
+        ordering=['first_name','startwork_date']
 
 
 class Director(Worker):
